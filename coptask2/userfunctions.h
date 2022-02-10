@@ -1,3 +1,5 @@
+#include <stdlib.h>
+#include <chrono>
 #include <vector>
 #include <math.h>
 using namespace std;
@@ -36,4 +38,8 @@ bool isanumber(const string& stride)
     string::const_iterator it = stride.begin();
     while (it != stride.end() && std::isdigit(*it)) ++it;
     return !stride.empty() && it == stride.end();
+}
+
+auto time(){
+    return std::chrono::high_resolution_clock::now();
 }
