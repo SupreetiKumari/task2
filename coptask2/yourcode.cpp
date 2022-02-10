@@ -10,9 +10,9 @@
 #include "filecheck.h"
 using namespace std;
 
-auto time(){
+/*auto time(){
     return std::chrono::high_resolution_clock::now();
-}
+}*/
 
 int main(int argc, char **argv)
 {
@@ -53,50 +53,30 @@ int main(int argc, char **argv)
                 return 0;
             }
             if(strcmp(argv[5],"mkl")==0){
-                vector<vector<float> > inputmatrix = filetovector(inputmatrixfile);
-                vector<vector<float> > weightmatrix = filetovector(weightmatrixfile);
-                vector<vector<float> > biasmatrix = filetovector(biasmatrixfile);
-                vector<vector<float> > outputmatrix;
-                int r1=inputmatrix.size();
-                int c1=inputmatrix[0].size();
-                int c2=weightmatrix[0].size();
+                double* inputmatrix = filetovector(inputmatrixfile);
+                double* weightmatrix = filetovector(weightmatrixfile);
+                double* biasmatrix = filetovector(biasmatrixfile);
+                double* outputmatrix;
+                int r1=row(inputmatrixfile);
+                int c1=column(inputmatrixfile);
+                int c2=column(weightmatrixfile);
                 
-                auto mkl_t1=time();
-                cblas_dgemm(CblasColumnMajor, CblasNoTrans, CblasNoTrans, 
+                //auto mkl_t1=time();
+                cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
                 r1, c2, c1, cons1, inputmatrix, c1, weightmatrix, c2, cons2, outputmatrix, c2);
                 int k,l;
-                for(k=0;k<r1;k++){
-                    for(l=0;l<c2;l++){
-                        outputmatrix[k][l]+=biasmatrix[k][l];
-                    }
+                for(k=0;k<r1*c2;k++){
+                    
+                    outputmatrix[k]+=biasmatrix[k];
+                    
                 }
-                auto mkl_t2=time();
-                auto mkl_timespan=duration_cast<duration<double>>(mkl_t2 - mkl_t1);
-                cout<<"Time taken by MKL: " <<mkl_timespan.count()<<"s\n";
-                vectortofile(outputmatrixfile, outputmatrix);
+                
+               // auto mkl_t2=time();
+               // auto mkl_timespan=duration_cast<duration<double>>(mkl_t2 - mkl_t1);
+               // cout<<"Time taken by MKL: " <<mkl_timespan.count()<<"s\n";
+                vectortofile(outputmatrixfile, outputmatrix,r1,c2);
                 return 0;
             }
-           /* else if(strcmp(argv[5],"openblas")==0){
-                vector<vector<float> > inputmatrix = filetovector(inputmatrixfile);
-                vector<vector<float> > weightmatrix = filetovector(weightmatrixfile);
-                vector<vector<float> > biasmatrix = filetovector(biasmatrixfile);
-                vector<vector<float> > outputmatrix;
-                int r1=inputmatrix.size();
-                int c1=inputmatrix[0].size();
-                int c2=weightmatrix[0].size();
-                
-                cblas_dgemm(CblasColumnMajor, CblasNoTrans, CblasNoTrans, 
-                r1, c2, c1, cons1, inputmatrix, c1, weightmatrix, c2, cons2, outputmatrix, c2);
-                int k,l;
-                for(k=0;k<r1;k++){
-                    for(l=0;l<c2;l++){
-                        outputmatrix[k][l]+=biasmatrix[k][l];
-                    }
-                }
-                vectortofile(outputmatrixfile, outputmatrix);
-                return 0;
-            }*/  
-            
             
         }
        
