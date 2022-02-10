@@ -24,23 +24,7 @@ vector<vector<float> > filetovector(string &filename)
     }
     return vec;
 }
-// this function is used to convert the input file to a 1d vector
-vector<float> fileto1Dvector(string &filename)
-{
-    int n;
-    ifstream inputfile;
-    inputfile.open(filename);
-    string co, line;
-    getline(inputfile, co);
-    n = stoi(co);
-    vector<float> vec;
-    while (getline(inputfile, line))
-    {
-        float val = stof(line);
-        vec.push_back(val);
-    }
-    return vec;
-}
+
 // this fucntion is used to write a 2d vector on the file passed
 void vectortofile(string &filename, vector<vector<float> > vec)
 {
@@ -57,19 +41,5 @@ void vectortofile(string &filename, vector<vector<float> > vec)
         {
             fout << vec[j][i] << "\n";
         }
-    }
-}
-// this fucntion is used to write a 1d vector on the file passed
-void vector1Dtofile(string &filename, vector<float> vec)
-{
-    int n = vec.size();
-    ofstream fout;
-    string line;
-    fout.open(filename);
-    fout << n << "\n";
-    for (int i = 0; i < n; i++)
-    {
-
-        fout << vec[i] << "\n";
     }
 }
