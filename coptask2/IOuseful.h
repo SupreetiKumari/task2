@@ -1,45 +1,64 @@
 #include <vector>
 #include <math.h>
 using namespace std;
-// this function is used to convert the input file to a 2d vector
-vector<vector<float> > filetovector(string &filename)
+// this function is used to convert the input file to a 1d vector
+
+int row(string &filename)
 {
-    int rows, column;
+int n;
     ifstream inputfile;
     inputfile.open(filename);
-    string ro, co, line;
+    string co, line;
     getline(inputfile, co);
-    column = stoi(co);
-    getline(inputfile, ro);
-    rows = stoi(ro);
-    vector<vector<float> > vec(rows, vector<float>(column, 0.0));
-    for (int i = 0; i < column; i++)
+string row;
+getline(inputfile, row);
+    n = stoi(row);
+return n;}
+
+int column(string &filename)
+{
+int n;
+    ifstream inputfile;
+    inputfile.open(filename);
+    string co, line;
+    getline(inputfile, co);
+string row;
+getline(inputfile, row);
+    n = stoi(co);
+return n;}
+
+double* filetovector(string &filename)
+{
+    int n;
+    ifstream inputfile;
+    inputfile.open(filename);
+    string co, line;
+    getline(inputfile, co);
+    n = stoi(co);
+    string row;
+    getline(inputfile, row);
+    vector<double> vec;
+    while (getline(inputfile, line))
     {
-        for (int j = 0; j < rows; j++)
-        {
-            getline(inputfile, line);
-            float val = stof(line);
-            vec[j][i] = val;
-        }
+        double val = stod(line);
+        vec.push_back(val);
     }
-    return vec;
+    double* a=&vec[0];
+    return a;
 }
 
-// this fucntion is used to write a 2d vector on the file passed
-void vectortofile(string &filename, vector<vector<float> > vec)
+// this function is used to write a 1d vector on the file passed
+void vectortofile(string &filename, double* vec, int r1, int c2)
 {
-    int row = vec.size();
-    int column = vec[0].size();
+
     ofstream fout;
     string line;
     fout.open(filename);
-    fout << column << "\n";
-    fout << row << "\n";
-    for (int i = 0; i < column; i++)
+    fout << c2 << "\n";
+    fout << r1 << "\n";
+    for (int i = 0; i < r1*c2; i++)
     {
-        for (int j = 0; j < row; j++)
-        {
-            fout << vec[j][i] << "\n";
-        }
+
+        fout << *(vec + i) << "\n";
     }
 }
