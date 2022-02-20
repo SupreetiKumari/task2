@@ -20,7 +20,7 @@ auto time(){
     return std::chrono::high_resolution_clock::now();
 }
 
-void sequential(int row1,int co1,int co2,float inputmatrix[row1][co1],float weightmatrix[co1][co2],float biasmatrix[row1][co2],float outputmatrix[row1][co2]){
+/*void sequential(int row1,int co1,int co2,float inputmatrix[row1][co1],float weightmatrix[co1][co2],float biasmatrix[row1][co2],float outputmatrix[row1][co2]){
 int i,j,k;
 	for(i=0;i<row1;i++){
         for(j=0;j<co2;j++){
@@ -35,7 +35,7 @@ int i,j,k;
         for(j=0;j<co2;j++){
             outputmatrix[i][j]+=biasmatrix[i][j];}
     }
-}
+}*/
 
 //Multiplication function
 void * multi(void *arg){
