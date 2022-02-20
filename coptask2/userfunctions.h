@@ -24,10 +24,4 @@ int i,j,k;
 
 
 
-// this function is to check if a string is a number or not
-bool isanumber(const string& stride)
-{
-    string::const_iterator it = stride.begin();
-    while (it != stride.end() && std::isdigit(*it)) ++it;
-    return !stride.empty() && it == stride.end();
-}
+
