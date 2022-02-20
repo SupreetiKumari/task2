@@ -22,7 +22,7 @@ int i,j,k;
     }
 }
 
-// add comment
+//Multiplication function
 void * multi(void *arg){
  long int num=(long int)arg;
  int a,b,c;
