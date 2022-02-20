@@ -23,7 +23,7 @@ int i,j,k;
 }
 
 //Multiplication function
-void * multi(void *arg){
+/*void * multi(void *arg){
  long int num=(long int)arg;
  int a,b,c;
 int start=(num*row1)/4;
@@ -39,7 +39,7 @@ int end= ((num+1)*row1)/4;
     }
 	return 0;
 
-}
+}/*
 
 // this function is to check if a string is a number or not
 bool isanumber(const string& stride)
