@@ -156,7 +156,7 @@ int main(int argc, char **argv)
 		    outputmatrix[i][j]+=biasmatrix[i][j];}
 	    }
 	    //Displaying the output in output file in column major order
-	     matrixtofile(outputmatrixfile,outputmatrix[1000][1000],row1,co2);
+	     matrixtofile(outputmatrixfile,outputmatrix,row1,co2);
             }
             
             else if(strcmp(argv[5],"openblas")==0){
