@@ -63,5 +63,24 @@ void filetovector(string &filename, float inputmatrix[1000]){
                  inputmatrix[i++]=x;
                  }
                  inputfile.close();}
+                 
+int row(string &filename){
+		ifstream inputfile;
+                inputfile.open(filename);
+                int c,r;
+                inputfile>>c;
+                inputfile>>r;
+                return r;
+}
+int column(string &filename){
+ifstream inputfile;
+                inputfile.open(filename);
+                int c,r;
+                inputfile>>c;
+                inputfile>>r;
+                return c;
+}
+
+
 
 
