@@ -54,8 +54,8 @@ void filetovector(string &filename, float inputmatrix[1000]){
 	ifstream inputfile;
                 inputfile.open(filename);
                 int co1,row1;
-                inputfile1>>co1;
-                inputfile1>>row1;
+                inputfile>>co1;
+                inputfile>>row1;
                 int i=0;
                 float x;
                 while (inputfile>>x)
