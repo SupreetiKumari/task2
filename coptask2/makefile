@@ -1,9 +1,7 @@
-all: yourcode.o 
-	g++ -Wall -g -o yourcode.out yourcode.o
-	
-yourcode.o: yourcode.cpp IOuseful.h userfunctions.h filecheck.h
-	g++ -c yourcode.cpp	
-	
-clean:
+target1:yourcode.cpp
+	g++ yourcode.cpp -o yourcode.out filecheck.h IO.h userfunctions.h -I /home/arushi/Desktop/sub2cop/new/include -L /home/arushi/Desktop/sub2cop/new/lib -lopenblas -lpthread -lgfortran
 
-	rm -f *.o 
+.PHONY: clean
+
+clean:
+	rm -f *.o yourcode.out
