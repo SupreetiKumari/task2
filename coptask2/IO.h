@@ -3,6 +3,8 @@
 #include <string>
 #include <fstream>
 using namespace std;
+
+//Writes the outputmatrix to output file in column major order
 void matrixtofile(string &filename, float outputmatrix[1000][1000],int r,int c){
  int i,j;
  ofstream file(filename);
@@ -18,6 +20,7 @@ void matrixtofile(string &filename, float outputmatrix[1000][1000],int r,int c){
     return;
 }
 
+//Writes outputvector to output file
 void vectortofile(string &filename,float outputvector[1000],int r,int c){
  int i;
  ofstream file(filename);
@@ -32,6 +35,7 @@ void vectortofile(string &filename,float outputvector[1000],int r,int c){
     return;
 }
 
+//Takes input from file in the form of 2D matrix
 void filetomatrix(string &filename, float inputmatrix[1000][1000]){
 	ifstream inputfile;
         inputfile.open(filename);
@@ -50,6 +54,7 @@ void filetomatrix(string &filename, float inputmatrix[1000][1000]){
 
 }
 
+//Takes input from file in the form of a 1D array
 void filetovector(string &filename, float inputmatrix[1000]){
 	ifstream inputfile;
                 inputfile.open(filename);
@@ -62,8 +67,10 @@ void filetovector(string &filename, float inputmatrix[1000]){
                  {
                  inputmatrix[i++]=x;
                  }
-                 inputfile.close();}
-                 
+                 inputfile.close();
+}
+
+//Return no. of rows 
 int row(string &filename){
 		ifstream inputfile;
                 inputfile.open(filename);
@@ -72,6 +79,8 @@ int row(string &filename){
                 inputfile>>r;
                 return r;
 }
+
+//Returns no. of columns
 int column(string &filename){
 ifstream inputfile;
                 inputfile.open(filename);
