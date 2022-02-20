@@ -30,8 +30,8 @@ We have the following files in our folder:<br\>
 In the terminal, use the following commands:
 <br/>
 1. ``` make ```<br/>
-An executable named ``` yourcode.o ``` will be generated.
-3. ``` ./yourcode.o ``` fullyconnected inputmatrix.txt weightmatrix.txt biasmatrix.txt openblas/pthread outputmatrix.txt<br/>
+An executable named ``` yourcode.out ``` will be generated.
+3. ``` ./yourcode.out ``` fullyconnected inputmatrix.txt weightmatrix.txt biasmatrix.txt openblas/pthread outputmatrix.txt<br/>
 
 ## OpenBlas Implementation:
 
