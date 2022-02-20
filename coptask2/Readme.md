@@ -22,6 +22,9 @@ We have the following files in our folder:<br\>
   * userfunctions.h: Consists of function "sequential" which is the normal matrix multiplication function. Used for comparing the time taken using linear algenra libraries and pthreads.
 * yourcode.cpp: Main function file which executes the suitable implementation for matrix multiplication depending on the input received from command line.
 * makefile: Generates the yourcode.o file.
+* Readme.md
+* gnuscriptfiles:
+  * f
 
 ## How to run the file
 In the terminal, use the following commands:
