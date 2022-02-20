@@ -36,6 +36,7 @@ int end= ((num+1)*row1)/4;
         }
 
     }
+	return 0;
 
 }
 auto time(){
