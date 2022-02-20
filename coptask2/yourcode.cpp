@@ -173,9 +173,9 @@ int main(int argc, char **argv)
                 int co1,row1;
                 inputfile1>>co1;
                 inputfile1>>row1;
-                double inputmatrix1[co1*row1];
+                float inputmatrix1[co1*row1];
                 int i=0;
-                double x;
+                float x;
                 while (inputfile1>>x)
                  {
                  inputmatrix1[i++]=x;
@@ -186,9 +186,9 @@ int main(int argc, char **argv)
                 int co2,row2;
                 inputfile2>>co2;
                 inputfile2>>row2;
-                double weightmatrix1[co2*row2];
+                float weightmatrix1[co2*row2];
                 int j=0;
-                double y;
+                float y;
                 while (inputfile2>>y)
                  {
                  weightmatrix1[j++]=y;
@@ -199,21 +199,21 @@ int main(int argc, char **argv)
                 int co3,row3;
                 inputfile3>>co3;
                 inputfile3>>row3;
-                double biasmatrix1[co3*row3];
+                float biasmatrix1[co3*row3];
                 int k=0;
-                double z;
+                float z;
                 while (inputfile3>>z)
                  {
                  biasmatrix1[k++]=z;
                  }
                  inputfile3.close();
                 
-                double outputmatrix1[co2*row1];
+                float outputmatrix1[co2*row1];
                 
               
                 
                 //auto mkl_t1=time();
-                cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
+                cblas_sgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
                 row1, co2, co1, 1.0, inputmatrix1, row1, weightmatrix1, co1, 0.0, outputmatrix1, row1);
                 int l;
                 for(k=0;k<row1*co2;k++){
@@ -250,4 +250,5 @@ int main(int argc, char **argv)
         }
     
 }
+
 
