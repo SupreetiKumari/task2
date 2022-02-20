@@ -8,6 +8,7 @@
 #include <cblas.h>
 
 #include "filecheck.h"
+#include "IO.h"
 int row1,co1,row2,co2,row3,co3;
 float inputmatrix[1000][1000];
 float weightmatrix[1000][1000];
@@ -155,17 +156,7 @@ int main(int argc, char **argv)
 		    outputmatrix[i][j]+=biasmatrix[i][j];}
 	    }
 	    //Displaying the output in output file in column major order
-	    ofstream inputfile4(outputmatrixfile);
-	    inputfile4<<co2<<"\n";
-	    inputfile4<<row1<<"\n";
-	    for(j=0;j<co2;j++){
-	    for(i=0;i<row1;i++){
-		
-		    inputfile4<<outputmatrix[i][j]<<"\n";
-		}
-	    }
-	    inputfile4.close();
-                return 0;
+	     matrixtofile(outputmatrixfile,outputmatrix[1000][1000],row1,co2);
             }
             
             else if(strcmp(argv[5],"openblas")==0){
