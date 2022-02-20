@@ -235,7 +235,7 @@ int main(int argc, char **argv)
                  auto mkl_t2=time();
                auto mkl_timespan=std::chrono::duration_cast<std::chrono::duration<double>>(mkl_t2 - mkl_t1);
                cout<<"Time taken by openblas: " <<mkl_timespan.count()<<"s\n";
-               ofstream fout(outputmatrixfile);
+               /*ofstream fout(outputmatrixfile);
                fout << co2 << "\n";
                fout << row1 << "\n";
                for (int i = 0; i < row1*co2; i++)
@@ -244,6 +244,8 @@ int main(int argc, char **argv)
               fout << outputmatrix1[i] << "\n";
              }
                 return 0;
+            }*/
+                vectortofile(outputmatrixfile,outputmatrix1,row1,co2);
             }
             
             
