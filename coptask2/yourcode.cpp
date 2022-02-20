@@ -22,11 +22,11 @@ float outputmatrix1[MAX];
 using namespace std;
 
 //Multiplication function
-void * multi(void *arg){
- long int num=(long int)arg;
- int a,b,c;
-int start=(num*row1)/4;
-int end= ((num+1)*row1)/4;
+void * multiply(void *param){
+int a,b,c;
+ long int id=(long int)param;
+int start=(id*row1)/4;
+int end= ((id+1)*row1)/4;
  for(a=start;a<end;a++){
         for(b=0;b<co2;b++){
            outputmatrix[a][b]=0;
@@ -101,13 +101,14 @@ int main(int argc, char **argv)
                 int i,j;
                 
                 auto p_t1=time();
-                
-                pthread_t tid[4];
+                //Creating threads(4)
+                pthread_t threadid[4];
                 for(i=0;i<4;i++){
-                    pthread_create(&tid[i],NULL,multi,(void*)&i);
+                    pthread_create(&threadid[i],NULL,multiply,(void*)i);
                 }
+                //Joining threads
                 for(j=0;j<4;j++){
-                    pthread_join(tid[j],NULL);
+                    pthread_join(threadid[j],NULL);
                 }
                 
                 
@@ -172,4 +173,3 @@ int main(int argc, char **argv)
         }
     
 }
-
