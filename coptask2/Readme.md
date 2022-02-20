@@ -31,7 +31,40 @@ In the terminal, use the following commands:
 
 ## OpenBlas Implementation:
 
-We have used the cblas_sgemm function from the cblas.h library of openblas to compute matrix multiplication result. The parameters passed to this 
+We have used the cblas_sgemm function from the cblas.h library of openblas to compute matrix multiplication result. The parameters passed to this are:<br/>
+Given input matrices A and B, outputmatrix C, and constants p and q, it performs the following operation:<br/>
+C = (pxAxB) + qxC
+1. Matrix format: CblasColMajor(Column major format)
+2. Transpose the inputmatrix(A) or not: CblasNoTrans
+3. Transpose the weightmatrix(B) or not: CblasNoTrans
+4. No. of rows in outputmatrix(C): row1
+5. No. of columns in outputmatrix(C): co2
+6. No. of columms in inputmatrix(A) or equivalently no. of rows in weightmatrix(B): co1
+7. Multiplication constant(p):1.0
+8. Inputmatrix(A)
+9. No. of rows in inputmatrix(A): row1
+10. Weightmatrix(B)
+11. No. of rows in weightmatrix(B): co1
+12. Multiplication constant(q):0.0
+13. Outputmatrix(C)
+14. No. of rows in outputmatrix(C): row1<br/>
+
+cblas_sgemm(CblasColMajor, CblasNoTrans, CblasNoTrans, row1, co2, co1, 1.0, inputmatrix1, row1, weightmatrix1, co1, 0.0, outputmatrix1, row1);<br/>
+To this outputmatrix, biasmatrix is added to obtain the final result.
+
+## Pthread Implementation
+ Library imported: pthread.h
+ 
+* Created an array of 4 threads using function pthread_t.
+* Used function pthread_create to create threads which perform matrix multiplication by dividing the computation among them. This function take 4 parameters as input: address of threadid, default NULL value, function for multiplication, argument to be passed to multiplication function).<br/>
+pthread_create(&threadid[i],NULL,multiply,(void*)i);
+* multiply function: Initializes start and end row index for each thread and thus divides the multiplication operation among all threads. Post this, it performs regular matrix multiplication.
+* After creating threads, we join all the 4 threads using function pthread_join and thus obtain the final outputmatrix.
+
+## Timing analysis of different implementations
+
+
+## Boxplots using gnuplot
 
 
 
