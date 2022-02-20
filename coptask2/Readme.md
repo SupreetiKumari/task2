@@ -29,8 +29,9 @@ We have the following files in our folder:<br\>
 ## How to run the file
 In the terminal, use the following commands:
 <br/>
-1. make
-2. ./yourcode.o fullyconnected inputmatrix.txt weightmatrix.txt biasmatrix.txt openblas/pthread outputmatrix.txt<br/>
+1. ``` make ```<br/>
+An executable named ``` yourcode.o ``` will be generated.
+3. ``` ./yourcode.o ``` fullyconnected inputmatrix.txt weightmatrix.txt biasmatrix.txt openblas/pthread outputmatrix.txt<br/>
 
 ## OpenBlas Implementation:
 
