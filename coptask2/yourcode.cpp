@@ -9,11 +9,17 @@
 
 #include "filecheck.h"
 #include "IO.h"
+#define MAX 1000000
 int row1,co1,row2,co2,row3,co3;
 float inputmatrix[1000][1000];
 float weightmatrix[1000][1000];
 float biasmatrix[1000][1000];
 float outputmatrix[1000][1000];
+
+float inputmatrix1[MAX];
+float weightmatrix1[MAX];
+float biasmatrix1[MAX];
+float outputmatrix1[MAX];
 using namespace std;
 
 auto time(){
@@ -28,7 +34,6 @@ int i,j,k;
                 outputmatrix[i][j]+=inputmatrix[i][k]*weightmatrix[k][j];
             }
         }
-
     }
     //Addition of bias matrix and product of inputmatrix and weightmatrix
     for(i=0;i<row1;i++){
@@ -38,22 +43,22 @@ int i,j,k;
 }*/
 
 //Multiplication function
-// void * multi(void *arg){
-//  long int num=(long int)arg;
-//  int a,b,c;
-// int start=(num*row1)/4;
-// int end= ((num+1)*row1)/4;
-//  for(a=start;a<end;a++){
-//         for(b=0;b<co2;b++){
-//            outputmatrix[a][b]=0;
-//             for(c=0;c<co1;c++){
-//                 outputmatrix[a][b]+=inputmatrix[a][c]*weightmatrix[c][b];
-//             }
-//         }
+ void * multi(void *arg){
+  long int num=(long int)arg;
+  int a,b,c;
+ int start=(num*row1)/4;
+ int end= ((num+1)*row1)/4;
+  for(a=start;a<end;a++){
+         for(b=0;b<co2;b++){
+            outputmatrix[a][b]=0;
+             for(c=0;c<co1;c++){
+                 outputmatrix[a][b]+=inputmatrix[a][c]*weightmatrix[c][b];
+             }
+         }
 
-//     }
+     }
 
-// }
+ }
 
 int main(int argc, char **argv)
 {
@@ -92,12 +97,14 @@ int main(int argc, char **argv)
                 return 0;
             }
             if(strcmp(argv[5],"pthread")==0){
-                ifstream inputfile1;
+                /*ifstream inputfile1;
                 inputfile1.open(inputmatrixfile);
                 int i,j;
                 inputfile1>>co1;
-                inputfile1>>row1;
-   		 float x;
+                inputfile1>>row1;*/
+                co1=column(inputmatrixfile);
+                row1=row(inputmatrixfile);
+   		 /*float x;
        	for(j=0;j<co1;j++){
         	for(i=0;i<row1;i++)
            	 {
@@ -105,13 +112,16 @@ int main(int argc, char **argv)
                 inputmatrix[i][j]=x;
           	  }
         	}
-   		 inputfile1.close();
-                 ifstream inputfile2;
+   		 inputfile1.close();*/
+   		 filetomatrix(inputmatrixfile,inputmatrix);
+                /* ifstream inputfile2;
                 inputfile2.open(weightmatrixfile);
                 
                 inputfile2>>co2;
-                inputfile2>>row2;
-   		 float y;
+                inputfile2>>row2;*/
+                 co2=column(weightmatrixfile);
+                row2=row(weightmatrixfile);
+   		 /*float y;
        	for(j=0;j<co2;j++){
         	for(i=0;i<row2;i++)
            	 {
@@ -119,13 +129,16 @@ int main(int argc, char **argv)
                 weightmatrix[i][j]=y;
           	  }
         	}
-   		 inputfile2.close();
-                 ifstream inputfile3;
+   		 inputfile2.close();*/
+   		 filetomatrix(weightmatrixfile,weightmatrix);
+                /* ifstream inputfile3;
                 inputfile1.open(biasmatrixfile);
                
                 inputfile3>>co3;
-                inputfile3>>row3;
-   		 float z;
+                inputfile3>>row3;*/
+                 co3=column(biasmatrixfile);
+                row3=row(biasmatrixfile);
+   		 /*float z;
        	for(j=0;j<co3;j++){
         	for(i=0;i<row3;i++)
            	 {
@@ -133,8 +146,9 @@ int main(int argc, char **argv)
                 biasmatrix[i][j]=z;
           	  }
         	}
-   		 inputfile3.close();
-                
+   		 inputfile3.close();*/
+   		 filetomatrix(biasmatrixfile,biasmatrix);
+                int i,j;
                 
                 auto p_t1=time();
                 
@@ -160,50 +174,53 @@ int main(int argc, char **argv)
             }
             
             else if(strcmp(argv[5],"openblas")==0){
-                ifstream inputfile1;
+                /*ifstream inputfile1;
                 inputfile1.open(inputmatrixfile);
                 int co1,row1;
                 inputfile1>>co1;
-                inputfile1>>row1;
-                float inputmatrix1[co1*row1];
+                inputfile1>>row1;*/
+                 co1=column(inputmatrixfile);
+                row1=row(inputmatrixfile);
                 int i=0;
-                float x;
+                /*float x;
                 while (inputfile1>>x)
                  {
                  inputmatrix1[i++]=x;
                  }
-                 inputfile1.close();
-                 ifstream inputfile2;
+                 inputfile1.close();*/
+                 filetovector(inputmatrixfile,inputmatrix1);
+                 /*ifstream inputfile2;
                 inputfile2.open(weightmatrixfile);
                 int co2,row2;
                 inputfile2>>co2;
-                inputfile2>>row2;
-                float weightmatrix1[co2*row2];
+                inputfile2>>row2;*/
+                 co2=column(weightmatrixfile);
+                row2=row(weightmatrixfile);
                 int j=0;
-                float y;
+                /*float y;
                 while (inputfile2>>y)
                  {
                  weightmatrix1[j++]=y;
                  }
-                 inputfile2.close();
-                 ifstream inputfile3;
+                 inputfile2.close();*/
+                 filetovector(weightmatrixfile,weightmatrix1);
+                 /*ifstream inputfile3;
                 inputfile1.open(biasmatrixfile);
                 int co3,row3;
                 inputfile3>>co3;
-                inputfile3>>row3;
-                float biasmatrix1[co3*row3];
+                inputfile3>>row3;*/
+                 co3=column(biasmatrixfile);
+                row3=row(biasmatrixfile);
                 int k=0;
-                float z;
+                /*float z;
                 while (inputfile3>>z)
                  {
                  biasmatrix1[k++]=z;
                  }
-                 inputfile3.close();
-                
-                float outputmatrix1[co2*row1];
-                
-              
-                
+                 inputfile3.close();*/
+                 filetovector(biasmatrixfile,biasmatrix1);
+         
+            
                 auto mkl_t1=time();
                 cblas_sgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
                 row1, co2, co1, 1.0, inputmatrix1, row1, weightmatrix1, co1, 0.0, outputmatrix1, row1);
