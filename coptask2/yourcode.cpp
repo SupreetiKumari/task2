@@ -6,6 +6,8 @@
 #include <chrono>
 #include <pthread.h>
 #include <cblas.h>
+
+#include "filecheck.h"
 int row1,co1,row2,co2,row3,co3;
 float inputmatrix[1000][1000];
 float weightmatrix[1000][1000];
@@ -31,22 +33,6 @@ int i,j,k;
     for(i=0;i<row1;i++){
         for(j=0;j<co2;j++){
             outputmatrix[i][j]+=biasmatrix[i][j];}
-    }
-}
-
-bool checkinputfile(string &filename)
-{
-    ifstream inputfile;
-    inputfile.open(filename);
-    if(!inputfile.is_open())
-    {
-        inputfile.close();
-        return 0;
-    }
-    else
-    {
-        inputfile.close();
-        return 1;
     }
 }
 
