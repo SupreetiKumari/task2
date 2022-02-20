@@ -1,0 +1,25 @@
+reset
+# Produce some dummy data
+set sample 200
+set table 'openblas.dat'
+plot [0:10] 0.5+rand(0)
+unset table
+
+set yrange [0:2]
+unset key
+
+# Retrieve statistical properties
+plot 'openblas.dat' u 1:2
+min_y = GPVAL_DATA_Y_MIN
+max_y = GPVAL_DATA_Y_MAX
+
+f(x) = mean_y
+fit f(x) 'openblas.dat' u 1:2 via mean_y
+
+# Plotting the minimum and maximum ranges with a shaded background
+set label 1 gprintf("Minimum = %g", min_y) at 2, min_y-0.2
+set label 2 gprintf("Maximum = %g", max_y) at 2, max_y+0.2
+set label 3 gprintf("Mean = %g", mean_y) at 2, max_y+0.35
+plot min_y with filledcurves y1=mean_y lt 1 lc rgb "#bbbbdd", \
+max_y with filledcurves y1=mean_y lt 1 lc rgb "#bbddbb", \
+'openblas.dat' u 1:2 w p pt 7 lt 1 ps 1

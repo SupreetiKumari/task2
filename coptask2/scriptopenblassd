@@ -1,0 +1,18 @@
+reset
+set sample 200
+set table 'openblas.dat'
+plot [0:10] 0.5+rand(0)
+unset table
+
+set yrange [0:2]
+unset key
+f(x) = mean_y
+fit f(x) 'openblas.dat' u 1:2 via mean_y
+
+stddev_y = sqrt(FIT_WSSR / (FIT_NDF + 1 ))
+
+# Removing points based on the standard deviation
+set label 1 gprintf("Mean = %g", mean_y) at 2, min_y-0.15
+set label 2 gprintf("Sigma = %g", stddev_y) at 2, min_y-0.3
+plot mean_y w l lt 3, mean_y+stddev_y w l lt 3, mean_y-stddev_y w l lt 3, \
+'openblas.dat' u 1:(abs($2-mean_y) < stddev_y ? $2 : 1/0) w p pt 7 lt 1 ps 1
