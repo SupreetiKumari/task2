@@ -22,6 +22,24 @@ int i,j,k;
     }
 }
 
+// add comment
+void * multi(void *arg){
+ long int num=(long int)arg;
+ int a,b,c;
+int start=(num*row1)/4;
+int end= ((num+1)*row1)/4;
+ for(a=start;a<end;a++){
+        for(b=0;b<co2;b++){
+           outputmatrix[a][b]=0;
+            for(c=0;c<co1;c++){
+                outputmatrix[a][b]+=inputmatrix[a][c]*weightmatrix[c][b];
+            }
+        }
+
+    }
+
+}
+
 // this function is to check if a string is a number or not
 bool isanumber(const string& stride)
 {
