@@ -15,9 +15,9 @@ float biasmatrix[1000][1000];
 float outputmatrix[1000][1000];
 using namespace std;
 
-/*auto time(){
+auto time(){
     return std::chrono::high_resolution_clock::now();
-}*/
+}
 
 void sequential(int row1,int co1,int co2,float inputmatrix[row1][co1],float weightmatrix[co1][co2],float biasmatrix[row1][co2],float outputmatrix[row1][co2]){
 int i,j,k;
@@ -135,7 +135,7 @@ int main(int argc, char **argv)
    		 inputfile3.close();
                 
                 
-                //auto mkl_t1=time();
+                auto p_t1=time();
                 
                 pthread_t tid[4];
                 for(i=0;i<4;i++){
@@ -147,11 +147,9 @@ int main(int argc, char **argv)
                 
                 
                 
-                //output
-                
-               // auto mkl_t2=time();
-               // auto mkl_timespan=duration_cast<duration<double>>(mkl_t2 - mkl_t1);
-               // cout<<"Time taken by MKL: " <<mkl_timespan.count()<<"s\n";
+                 auto p_t2=time();
+               auto p_timespan=std::chrono::duration_cast<std::chrono::duration<double>>(p_t2 - p_t1);
+               cout<<"Time taken by pthread: " <<p_timespan.count()<<"s\n";
 		for(i=0;i<row1;i++){
 		for(j=0;j<co2;j++){
 		    outputmatrix[i][j]+=biasmatrix[i][j];}
@@ -215,7 +213,7 @@ int main(int argc, char **argv)
                 
               
                 
-                //auto mkl_t1=time();
+                auto mkl_t1=time();
                 cblas_sgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
                 row1, co2, co1, 1.0, inputmatrix1, row1, weightmatrix1, co1, 0.0, outputmatrix1, row1);
                 int l;
@@ -225,9 +223,10 @@ int main(int argc, char **argv)
                     
                 }
                 
-               // auto mkl_t2=time();
-               // auto mkl_timespan=duration_cast<duration<double>>(mkl_t2 - mkl_t1);
-               // cout<<"Time taken by MKL: " <<mkl_timespan.count()<<"s\n";
+               
+                 auto mkl_t2=time();
+               auto mkl_timespan=std::chrono::duration_cast<std::chrono::duration<double>>(mkl_t2 - mkl_t1);
+               cout<<"Time taken by openblas: " <<mkl_timespan.count()<<"s\n";
                ofstream fout(outputmatrixfile);
                fout << co2 << "\n";
                fout << row1 << "\n";
