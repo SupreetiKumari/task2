@@ -136,13 +136,11 @@ int main(int argc, char **argv)
                 //Column and row number for inputmatrix
                 co1=column(inputmatrixfile);
                 row1=row(inputmatrixfile);
-                int i=0;
 		//1D array inputmatrix1 is stored
                 filetovector(inputmatrixfile,inputmatrix1); 
 		//Column and row number for weightmatrix    
                 co2=column(weightmatrixfile);
                 row2=row(weightmatrixfile);
-                int j=0; 
 		//1D array weightmatrix is stored   
                 filetovector(weightmatrixfile,weightmatrix1);  
 		//Column and row number for biasmatrix
@@ -156,7 +154,6 @@ int main(int argc, char **argv)
 		//Sets outputmatrix=inputmatrix*weightmatrix
                 cblas_sgemm(CblasColMajor, CblasNoTrans, CblasNoTrans,
                 row1, co2, co1, 1.0, inputmatrix1, row1, weightmatrix1, co1, 0.0, outputmatrix1, row1);
-                int l;
                 for(k=0;k<row1*co2;k++){                    
                  outputmatrix1[k]+=biasmatrix1[k];
                  }  
