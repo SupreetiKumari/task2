@@ -1,6 +1,6 @@
-# COP 290 : Task 1, Subtask 2
+# COP 290 : Task 1 Subtask 2
 
-This is the readme file for Task 1, Subtask 2: Code performance, learning plotting through scripts as part of COP 290: Design Practices course.<br/>
+This is the readme file for Task 1 Subtask 2: Code performance, learning plotting through scripts as part of COP 290: Design Practices course.<br/>
 Contributed by: Arushi Goyal(2020CS50418) and Supreeti Kumari(2020CS10396)
 
 ## Aim of the task:
