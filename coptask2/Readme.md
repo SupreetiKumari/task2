@@ -19,9 +19,9 @@ We have the following files in our folder:<br\>
 * Helper function files:
   * filecheck.h: Checks if the inputfile provided exists or not. If not, displays an error:"The inputmatrixfile file unfortunately could not be opened. Please give a valid file".
   * IO.h: Reads inputmatrices from inputfiles and writes the outputmatrix to the outputfile.
-  * userfunctions.h: Consists of function "sequential" which is the normal matrix multiplication function. Used for comparing the time taken using linear algenra libraries and pthreads.
+  * userfunctions.h: Consists of function "sequential" which is the normal matrix multiplication function. Used for comparing the time taken using linear algebra libraries and pthreads against sequentail implementation.
 * yourcode.cpp: Main function file which executes the suitable implementation for matrix multiplication depending on the input received from command line.
-* makefile: Generates the yourcode.o file.
+* makefile: Generates the yourcode.out file.
 * Readme.md
 * gnuscriptfiles:
   * f
