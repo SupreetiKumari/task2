@@ -100,7 +100,7 @@ We have 2 different type of plots. One is comparison based and second based on t
 1. Comparison Based-
  It shows the comparison beteen the openblas, sequential and pthread on the basis of two prameters- mean and standard devaition.
 2. Matrix size based-
-Here we have various matrix sizes on the x-axis and their corresponding running time on the y-axis.
+Here we have various matrix sizes on the x-axis and their corresponding running time on the y-axis. With the help of this data we can also calculate the mean and standard deviation of the data and hence further use it for comparison.
 
 
 
