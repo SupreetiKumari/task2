@@ -90,13 +90,17 @@ Std. deviation: 0.0049685 s<br/>
 Mean: 0.867278 s<br/>
 Std. deviation: 1.01302 s <br/>
 
-![Mean](comparison-mean.png)<br/>
-![Standard Deviation](comparison-sd.jpg)
+
 
 
 ## Boxplots using gnuplot
 
+We have 2 different type of plots. One is comparison based and second based on timing vs matrix size.
 
+1. Comparison Based-
+ It shows the comparison beteen the openblas, sequential and pthread on the basis of two prameters- mean and standard devaition.
+2. Matrix size based-
+Here we have various matrix sizes on the x-axis and their corresponding running time on the y-axis.
 
 
 
