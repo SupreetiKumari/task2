@@ -23,6 +23,11 @@ We have the following files in our folder:<br\>
 * yourcode.cpp: Main function file which executes the suitable implementation for matrix multiplication depending on the input received from command line.
 * makefile: Generates the yourcode.out file.
 * Readme.md
+* mean_sd.cpp: Used to calculate mean and standard deviation of time taken by different implementations for matrix multiplication.
+* .dat files: Contains matrix size- timing correspondence for different implementations
+  * pthread.dat
+  * openblas.dat
+  * sequential.dat
 * gnuscriptfiles:
   * f
 
@@ -67,7 +72,27 @@ pthread_create(&threadid[i],NULL,multiply,(void*)i);
 
 ## Timing analysis of different implementations
 
-We are using GNU-plot for ploting the mean and standard deviation of the different data we have. 
+Range of matrix sizes considered: 100 to 1000<br/>
+The mean and standard deviations of time taken by the 3 implemenattions are as follows:<br/>
+
+#### 1. Pthread
+
+Mean: 0.42385 s<br/>
+Std. deviation: 0.500127 s<br/>
+
+#### 2. OpenBlas
+
+Mean: 0.00464799 s<br/>
+Std. deviation: 0.0049685 s<br/>
+
+#### 3. Sequential
+
+Mean: 0.867278 s<br/>
+Std. deviation: 1.01302 s <br/>
+
+
+
+
 ## Boxplots using gnuplot
 
 
