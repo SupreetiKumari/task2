@@ -103,5 +103,12 @@ We have 2 different type of plots. One is comparison based and second based on t
 2. Matrix size based- 
 The script is contained in the file called script-plot. It plots matrix size on x-axis and running time on the y-axis. It is in this way implementated on the data obtained from the 3 implementations-openblas, pthread and sequential implementation. The result obtained fron openblas is in the file called openblas-plot.png and openblas-plot.eps. Similarly for the other two implementations
 
+## Result of the task-
 
+After running the matrix multiplication operation in three different ways on matrices of variuos sizes we can conclude these points-
+
+1. For small sized matrices(1x1 to 10x10) the running time follows the order- pthread > openblas > sequential
+2. For medium and large sized matrices ( 50X50 onwards) the running time follows the order- sequential > pthread > openblas 
+3. On observing carefully we can conclude that the running time for large matrices follows the rule-
+running time for sequential=2 X (running time for pthreads).
 
