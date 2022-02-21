@@ -110,6 +110,6 @@ After running the matrix multiplication operation in three different ways on mat
 
 1. For small sized matrices(1x1 to 10x10) the running time follows the order- pthread > openblas > sequential
 2. For medium and large sized matrices ( 50X50 onwards) the running time follows the order- sequential > pthread > openblas 
-3. On observing carefully we can conclude that the running time for large matrices follows the rule-
-running time for sequential=2 X (running time for pthreads).
+3. On observing carefully we can conclude that the mean running time for large matrices follows the pattern-
+running time for sequential=2 X (running time for pthreads). The openblas implementation takes very less time in comparison to other implementations.
 
