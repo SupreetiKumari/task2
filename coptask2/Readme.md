@@ -67,7 +67,7 @@ pthread_create(&threadid[i],NULL,multiply,(void*)i);
 
 ## Timing analysis of different implementations
 
-
+We are using GNU-plot for ploting the mean and standard deviation of the different data we have. 
 ## Boxplots using gnuplot
 
 
