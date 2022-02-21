@@ -36,8 +36,6 @@ float sd(string &filename,float mean, int num){
         sdsum/=num;
         return sqrt(sdsum);
         
-   	
-
 
 }
 int main(){
@@ -46,5 +44,5 @@ int main(){
  cin>>s;
  cout<<mean(s)<<"\n";
  cout<<sd(s,mean(s),sumcount)<<"\n";
-
+ return 0;
 }
