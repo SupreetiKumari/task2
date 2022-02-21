@@ -62,7 +62,7 @@ To this outputmatrix, biasmatrix is added to obtain the final result.
 * Created an array of 4 threads using function pthread_t.
 * Used function pthread_create to create threads which perform matrix multiplication by dividing the computation among them. This function take 4 parameters as input: address of threadid, default NULL value, function for multiplication, argument to be passed to multiplication function).<br/>
 pthread_create(&threadid[i],NULL,multiply,(void*)i);
-* multiply function: Initializes start and end row index for each thread and thus divides the multiplication operation among all threads. Post this, it performs regular matrix multiplication.
+* multiply function: Initializes begin and end row index for each thread and thus divides the multiplication operation among all threads. Post this, it performs regular matrix multiplication.
 * After creating threads, we join all the 4 threads using function pthread_join and thus obtain the final outputmatrix.
 
 ## Timing analysis of different implementations
