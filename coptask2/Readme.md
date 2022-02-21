@@ -37,6 +37,7 @@ In the terminal, use the following commands:
 1. ``` make ```<br/>
 An executable named ``` yourcode.out ``` will be generated.
 3. ``` ./yourcode.out ``` fullyconnected inputmatrix.txt weightmatrix.txt biasmatrix.txt openblas/pthread outputmatrix.txt<br/>
+4. You can also run ```make clean``` to clean the .o files generated.
 
 ## OpenBlas Implementation:
 
