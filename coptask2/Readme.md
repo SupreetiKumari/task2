@@ -24,7 +24,7 @@ We have the following files in our folder:<br\>
 * makefile: Generates the yourcode.out file.
 * Readme.md
 * mean_sd.cpp: Used to calculate mean and standard deviation of time taken by different implementations for matrix multiplication.
-* .dat files: Contains matrix size- timing correspondence for different implementations
+* .dat files: Contains matrix sizes and the correspong time taken for different implementations
   * pthread.dat
   * openblas.dat
   * sequential.dat
