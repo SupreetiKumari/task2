@@ -90,7 +90,8 @@ Std. deviation: 0.0049685 s<br/>
 Mean: 0.867278 s<br/>
 Std. deviation: 1.01302 s <br/>
 
-
+![Mean](comparison-mean.png)<br/>
+![Standard Deviation](comparison-sd.jpg)
 
 
 ## Boxplots using gnuplot
