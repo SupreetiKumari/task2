@@ -1,0 +1,10 @@
+set style data boxplot
+set title "Matrix size vs running time-sequential"
+set xlabel("matrix size")
+set ylabel("running time")
+set xtics("100" 1, "150" 2, "200" 3,"250" 4, "300" 5, "350" 6, "400" 7,"450" 8,"500" 9,"550" 10,"600" 11,"650" 12,"700" 13,"750" 14,"800" 15,"850" 16, "900" 17,"950" 18,"1000" 19) #scale 0.0
+
+unset key
+#set terminal postscript eps enhanced
+#set output "sequential-plot.eps"
+plot "sequentialplot.dat" using (1):1,'' using (2):2,'' using (3):3, '' using (4):4,'' using (5):5,'' using (6):6,'' using (7):7,'' using (8):8,'' using (9):9,'' using (10):10,'' using (11):11,'' using (12):12,'' using (13):13,'' using (14):14,'' using (15):15 ,'' using (16):16, '' using (17):17 ,'' using (18):18 ,'' using (19):19 

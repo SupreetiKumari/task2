@@ -1,0 +1,7 @@
+set style data boxplot
+set title "Comparison on the basis of standard deviation"
+set xtics("sequential" 1, "openblas" 2, "pthreads" 3) #scale 0.0
+#set terminal postscript eps enhanced
+#set output "comparison-sd.eps"
+
+plot "comparison" using (1):1,'' using (2):2,'' using (3):3
