@@ -155,11 +155,11 @@ int main(int argc, char **argv)
             
                 vectortofile(outputmatrixfile,outputmatrix1,row1,co2);
                 
-                auto seqt1=time();
+                auto seqt3=time();
              
                 sequential(row1,co1,co2,inputmatrix,weightmatrix,biasmatrix,outputmatrix);
-                auto seqt2=time();
-      auto seq_timespan=std::chrono::duration_cast<std::chrono::duration<double>>(seqt2 - seqt1);
+                auto seqt4=time();
+      auto seq_timespan=std::chrono::duration_cast<std::chrono::duration<double>>(seqt4 - seqt3);
                cout<<"Time taken by sequential: " <<seq_timespan.count()<<"s\n";
             }
             
