@@ -29,7 +29,18 @@ We have the following files in our folder:<br\>
   * openblas.dat
   * sequential.dat
 * gnuscriptfiles:
-  * f
+  * openblas-plot.png - picture of plot of matrix size vs running time
+  * openblas-plot.eps- eps file of open blas plot
+  * pthread-plot.png - picture of plot of matrix size vs running time
+  * pthread-plot.eps- eps file of pthread plot
+  * sequential-plot.png - picture of plot of matrix size vs running time
+  * sequential-plot.eps- eps file of sequential plot
+  * script-comparison - contains the script for comparison between different implementations
+  * script-plot - contains the script for plotting matrix size vs running time
+  * comparison-mean.png - picture of plot of comaprison on the basis of mean
+  * comparison-mean.eps - eps file of comparion-mean
+  * comparison-sd.png - picture of plot of comaprison on the basis of sd
+  * comparison-sd.eps - eps file of comparion-sd
 
 ## How to run the file
 In the terminal, use the following commands:
