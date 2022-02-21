@@ -73,7 +73,7 @@ pthread_create(&threadid[i],NULL,multiply,(void*)i);
 ## Timing analysis of different implementations
 
 Range of matrix sizes considered: 100 to 1000<br/>
-The mean and standard deviations of time taken by the 3 implemenattions are as follows:<br/>
+The mean and standard deviations of time taken by the 3 implementations are as follows:<br/>
 
 #### 1. Pthread
 
@@ -88,8 +88,9 @@ Std. deviation: 0.0049685 s<br/>
 #### 3. Sequential
 
 Mean: 0.867278 s<br/>
-Std. deviation: 1.01302 s <br/>
-
+Std. deviation: 1.01302 s <br/><br/>
+<img src="comparison-mean.png" alt="Mean" width="600"/><br/>
+<img src="comparison-sd.png" alt="Standard dev" width="600"/>
 
 
 
@@ -100,7 +101,7 @@ We have 2 different type of plots. One is comparison based and second based on t
 1. Comparison Based-
  It shows the comparison beteen the openblas, sequential and pthread on the basis of two prameters- mean and standard devaition.
 2. Matrix size based-
-Here we have various matrix sizes on the x-axis and their corresponding running time on the y-axis. With the help of this data we can also calculate the mean and standard deviation of the data and hence further use it for comparison.
+Here we have various matrix sizes on the x-axis and their corresponding running time on the y-axis.
 
 
 
