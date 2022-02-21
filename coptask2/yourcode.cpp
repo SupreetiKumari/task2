@@ -28,10 +28,10 @@ int a,b,c;
 //Convert param of void * type to long int to calculate thread id(0 to 3)
 long int id=(long int)param;
 //Start row index for thread 
-int start=(id*row1)/4;
+int begin=(id*row1)/4;
 //end row index for thread
 int end= ((id+1)*row1)/4;
- for(a=start;a<end;a++){
+ for(a=begin;a<end;a++){
         for(b=0;b<co2;b++){
 	   //Setting initial value in outputmatrix to 0
            outputmatrix[a][b]=0;
@@ -125,10 +125,17 @@ int main(int argc, char **argv)
 		//Adding biasmatrix to outputmatrix
 		for(i=0;i<row1;i++){
 		for(j=0;j<co2;j++){
-		    outputmatrix[i][j]+=biasmatrix[i][j];}
-	    }
+		    outputmatrix[i][j]+=biasmatrix[i][j];
+		}
+	      }
 	     //Displaying outputmatrix in output file
 	     matrixtofile(outputmatrixfile,outputmatrix,row1,co2);
+	     //Calculating time taken by sequential implementation    
+   	     auto seqt1=time();
+             sequential(row1,co1,co2,inputmatrix,weightmatrix,biasmatrix,outputmatrix);
+             auto seqt2=time();
+      	     auto seq_timespan=std::chrono::duration_cast<std::chrono::duration<double>>(seqt2 - seqt1);
+             cout<<"Time taken by sequential: " <<seq_timespan.count()<<"s\n";
             }
             
 	    //OpenBlas implementation
@@ -160,17 +167,16 @@ int main(int argc, char **argv)
 		 //End time for openblas implementation   
                 auto blas_t2=time();
 		//Calculating time elapsed for openblas implementation
-               auto blas_timespan=std::chrono::duration_cast<std::chrono::duration<double>>(blas_t2 - blas_t1);
-               cout<<"Time taken by openblas: " <<blas_timespan.count()<<"s\n";
+                auto blas_timespan=std::chrono::duration_cast<std::chrono::duration<double>>(blas_t2 - blas_t1);
+                cout<<"Time taken by openblas: " <<blas_timespan.count()<<"s\n";
             
                 vectortofile(outputmatrixfile,outputmatrix1,row1,co2);
                 //Comparison with time taken for normal matrix multiplication
                 auto seqt1=time();
-             
                 sequential(row1,co1,co2,inputmatrix,weightmatrix,biasmatrix,outputmatrix);
                 auto seqt2=time();
      		auto seq_timespan=std::chrono::duration_cast<std::chrono::duration<double>>(seqt2 - seqt1);
-               cout<<"Time taken by sequential: " <<seq_timespan.count()<<"s\n";
+                cout<<"Time taken by sequential: " <<seq_timespan.count()<<"s\n";
             }
             
             
