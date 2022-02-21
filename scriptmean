@@ -1,0 +1,31 @@
+reset
+# here we are first producing some  dummy data
+set sample 250
+set table 'sequential.dat'
+plot [100:400] 0.75+rand(0)
+unset table
+
+set yrange [0.05:1.95]
+unset key
+
+# here we are retrieving statistical properties
+
+plot 'sequential.dat' u 1:2
+max_y = GPVAL_DATA_Y_MAX
+min_y = GPVAL_DATA_Y_MIN
+
+
+fun(x) = mean_y
+fit fun(x) 'sequential.dat' u 1:2 via mean_y
+
+# here we are plotting the mean,minimum, maximum with a shaded background
+
+set label 1 gprintf("Mean of sequential = %g", mean_y) at 200, min_y-0.45
+set label 2 gprintf("Minimum of sequential = %g", min_y) at 200, min_y-0.2
+set label 3 gprintf("Maximum of sequential = %g", max_y) at 200, min_y-0.35 
+#for eps
+set terminal postscript eps enhanced
+ set output "sequentialmean.eps"
+plot max_y with filledcurves y1=mean_y  lc rgb "#bdbbdb" lt 2, \
+min_y with filledcurves y1=mean_y  lc rgb "#dddddd" lt 2, \
+'sequential.dat' u 1:2 w p lt 1 ps 1 pt 9

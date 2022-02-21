@@ -1,0 +1,28 @@
+reset
+# here we are first producing some  dummy data
+set sample 250
+set table 'sequential.dat'
+plot [100:400] 0.75+rand(0)
+unset table
+
+set yrange [0.05:1.95]
+unset key
+fun(x) = mean_y
+fit fun(x) 'sequential.dat' u 1:2 via mean_y
+
+min_y = GPVAL_DATA_Y_MIN
+stddev_y = sqrt(FIT_WSSR / (FIT_NDF + 1 ))
+
+#  we are then removing the points on the basis of  standard deviation
+
+set label 1 gprintf("Sigma of sequential = %g", stddev_y) at 200, min_y-0.35
+set label 2 gprintf("Mean of sequential = %g", mean_y) at 200, min_y-0.25
+
+#for eps
+set terminal postscript eps enhanced
+set output "sdsequential.eps"
+
+plot 'sequential.dat' u 1:(abs($2-mean_y) < stddev_y ? $2 : 1/0) w p  lt 2  pt 9 ps 1,\
+ mean_y-stddev_y w l lt 5,  mean_y+stddev_y w l lt 2, mean_y w l lt 3
+
+
